@@ -1,0 +1,1909 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Filolove 💖 — ¿Qué filósofo/a eres?</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    body { font-family: 'Inter', sans-serif; background: radial-gradient(circle at 10% 10%, #fff0f6, #fff); }
+    .heartbeat { animation: heartbeat 1.6s ease-in-out infinite; display:inline-block; }
+    @keyframes heartbeat { 0%{transform:scale(1);}30%{transform:scale(1.05);}60%{transform:scale(0.95);}100%{transform:scale(1);} }
+    .option-card { transition: all .12s ease; cursor:pointer; }
+    .option-card:hover { transform: translateY(-3px); background-color: #fff5f7; }
+    .option-selected { box-shadow: 0 6px 18px rgba(236,72,153,0.12); background: linear-gradient(90deg,#fff7fb,#fff); border-color:#fbcfe8; }
+    .fade { animation: fadeIn .6s ease; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+    .hidden { display: none !important; }
+    .user-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(45deg, #f472b6, #ec4899); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; }
+    .password-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #9ca3af; }
+    .privacy-link { color: #ec4899; text-decoration: underline; cursor: pointer; }
+    .privacy-link:hover { color: #be185d; }
+    .tag { display: inline-block; background: #fdf2f8; border: 1px solid #fbcfe8; color: #be185d; padding: 4px 12px; border-radius: 20px; font-size: 14px; margin: 2px; }
+    .profile-section { background: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; border: 1px solid #fdf2f8; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6">
+
+<div id="privacyModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-2xl max-w-4xl max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-pink-700">Política de Privacidad</h2>
+        <button id="closePrivacyModal" class="text-pink-500 hover:text-pink-700 text-2xl">&times;</button>
+      </div>
+      
+      <div class="prose prose-pink max-w-none">
+        <p><strong>Fecha de última actualización:</strong> 15 de octubre de 2025</p>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">1. Responsable del tratamiento de los datos</h3>
+          <p>
+            El responsable del tratamiento de los datos personales recogidos en esta web es:
+            <br><strong>Gerard</strong><br>
+            Correo electrónico de contacto: 
+            <a href="mailto:gerarmp2112@gmail.com" class="text-rose-500 hover:text-rose-700">gerarmp2112@gmail.com</a>
+          </p>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">2. Datos que se recopilan</h3>
+          <p>En esta página web se recopilan los siguientes datos personales:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li>Nombre de usuario</li>
+            <li>Dirección de correo electrónico (opcional)</li>
+            <li>Contraseña (encriptada)</li>
+            <li>Resultados de tests filosóficos</li>
+            <li>Historial de actividad en la plataforma</li>
+          </ul>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">3. Finalidad del tratamiento</h3>
+          <p>Los datos proporcionados se utilizan para:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li>Crear y gestionar una cuenta de usuario en la plataforma.</li>
+            <li>Permitir el funcionamiento del sistema de match filosófico.</li>
+            <li>Guardar y mostrar el historial de resultados de tests.</li>
+            <li>Proporcionar estadísticas personalizadas sobre tu evolución filosófica.</li>
+            <li>Mostrar perfiles de otros usuarios para encontrar afinidades.</li>
+          </ul>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">4. Legitimación del tratamiento</h3>
+          <p>
+            La base legal para el tratamiento de los datos personales es el 
+            <strong>consentimiento explícito del usuario</strong>, otorgado al registrarse en la página web y aceptar la presente Política de Privacidad.
+          </p>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">5. Conservación de los datos</h3>
+          <p>
+            Los datos personales se conservarán mientras el usuario mantenga su cuenta activa. 
+            Una vez eliminada la cuenta, los datos se suprimirán de forma segura en un plazo máximo de <strong>6 meses</strong>.
+          </p>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">6. Comunicación de datos a terceros</h3>
+          <p>
+            No se cederán datos personales a terceros, salvo obligación legal o cuando sea necesario 
+            para el correcto funcionamiento del servicio (por ejemplo, proveedores de alojamiento web o servidores, siempre bajo contrato que garantice la confidencialidad).
+          </p>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">7. Derechos de los usuarios</h3>
+          <p>Los usuarios pueden ejercer en cualquier momento los siguientes derechos:</p>
+          <ul class="list-disc list-inside ml-4">
+            <li>Derecho de acceso a sus datos personales.</li>
+            <li>Derecho de rectificación de datos inexactos o incompletos.</li>
+            <li>Derecho de supresión ("derecho al olvido").</li>
+            <li>Derecho de oposición o limitación del tratamiento.</li>
+            <li>Derecho a la portabilidad de sus datos.</li>
+          </ul>
+          <p class="mt-2">
+            Para ejercer estos derechos, el usuario puede enviar una solicitud al correo: 
+            <a href="mailto:gerarmp2112@gmail.com" class="text-rose-500 hover:text-rose-700">gerarmp2112@gmail.com</a>
+          </p>
+          <p>
+            Si el usuario considera que sus derechos no han sido respetados, puede presentar una reclamación ante la 
+            <a href="https://www.aepd.es" target="_blank" class="text-rose-500 hover:text-rose-700">Agencia Española de Protección de Datos (AEPD)</a>.
+          </p>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">8. Seguridad de los datos</h3>
+          <p>
+            El responsable se compromete a adoptar las medidas técnicas y organizativas necesarias para garantizar la seguridad 
+            de los datos personales y evitar su alteración, pérdida o acceso no autorizado.
+          </p>
+        </section>
+
+        <section class="mb-6">
+          <h3 class="text-xl font-semibold text-pink-700 mb-2">9. Cambios en esta Política de Privacidad</h3>
+          <p>
+            El responsable se reserva el derecho a modificar la presente política para adaptarla a futuras novedades legislativas o técnicas. 
+            En caso de modificación, se notificará a los usuarios con antelación razonable.
+          </p>
+        </section>
+
+        <footer class="text-center mt-8 text-sm text-gray-600">
+          © 2025 Filolove. Todos los derechos reservados.
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="w-full max-w-4xl bg-white/90 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-pink-100">
+  <section id="authScreen" class="px-8 py-12 text-center fade">
+    <h1 class="text-5xl font-extrabold text-pink-700 mb-3">Bienvenido/a a <span class="text-rose-500">Filolove</span></h1>
+    <p class="text-pink-500 text-lg mb-8">Inicia sesión o regístrate para guardar tus resultados</p>
+    
+    <div id="loginForm" class="max-w-md mx-auto">
+      <div class="mb-4">
+        <input type="text" id="loginUsername" placeholder="Nombre de usuario" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+      </div>
+      <div class="mb-4 relative">
+        <input type="password" id="loginPassword" placeholder="Contraseña" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 pr-12">
+        <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+          👁️
+        </button>
+      </div>
+      <button id="loginBtn" class="w-full px-8 py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-full text-lg font-semibold shadow-md hover:scale-105 transition mb-4">
+        Iniciar sesión
+      </button>
+      <p class="text-pink-400 text-sm mb-4">¿No tienes cuenta? <button id="showRegisterBtn" class="text-rose-500 hover:underline">Regístrate aquí</button></p>
+      <button id="continueWithoutAccount" class="w-full px-8 py-3 border border-pink-300 text-pink-600 rounded-full text-lg font-semibold hover:bg-pink-50 transition">
+        Continuar sin cuenta
+      </button>
+    </div>
+
+    <div id="registerForm" class="max-w-md mx-auto hidden">
+      <div class="mb-4">
+        <input type="text" id="registerUsername" placeholder="Nombre de usuario" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+      </div>
+      <div class="mb-4">
+        <input type="email" id="registerEmail" placeholder="Email (opcional)" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+      </div>
+      <div class="mb-4 relative">
+        <input type="password" id="registerPassword" placeholder="Contraseña" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 pr-12">
+        <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+          👁️
+        </button>
+      </div>
+      <div class="mb-4 relative">
+        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400 pr-12">
+        <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+          👁️
+        </button>
+      </div>
+      
+      <div class="mb-6">
+        <label class="flex items-start space-x-3 text-sm text-pink-600">
+          <input type="checkbox" id="privacyCheckbox" class="mt-1 rounded border-pink-300 text-rose-500 focus:ring-rose-500">
+          <span>
+            Acepto la <button type="button" class="privacy-link" onclick="showPrivacyModal()">Política de Privacidad</button> 
+            y el tratamiento de mis datos según lo establecido en la misma.
+          </span>
+        </label>
+      </div>
+      
+      <button id="registerBtn" class="w-full px-8 py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-full text-lg font-semibold shadow-md hover:scale-105 transition mb-4">
+        Crear cuenta
+      </button>
+      <p class="text-pink-400 text-sm">¿Ya tienes cuenta? <button id="showLoginBtn" class="text-rose-500 hover:underline">Inicia sesión aquí</button></p>
+    </div>
+
+    <div id="userWelcome" class="hidden max-w-md mx-auto">
+      <div class="flex items-center justify-center gap-4 mb-6">
+        <div id="userAvatar" class="user-avatar"></div>
+        <div class="text-left">
+          <h2 id="welcomeUser" class="text-xl font-bold text-pink-700">¡Hola, Usuario!</h2>
+          <p class="text-pink-500 text-sm">¿Listo para descubrir tu filósofo interior?</p>
+        </div>
+      </div>
+      <button id="startWithUserBtn" class="w-full px-8 py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-full text-lg font-semibold shadow-md hover:scale-105 transition mb-4">
+        Continuar test
+      </button>
+      <button id="findMatchesBtn" class="hidden w-full px-8 py-3 bg-gradient-to-r from-rose-500 to-purple-500 text-white rounded-full text-lg font-semibold shadow-md hover:scale-105 transition mb-4">
+        💖 Buscar Matches
+      </button>
+      <button id="viewHistoryBtn" class="w-full px-8 py-3 border border-pink-300 text-pink-600 rounded-full text-lg font-semibold hover:bg-pink-50 transition mb-4">
+        Ver mi historial
+      </button>
+      <button id="editProfileBtn" class="w-full px-8 py-3 border border-pink-300 text-pink-600 rounded-full text-lg font-semibold hover:bg-pink-50 transition">
+        ✏️ Editar Perfil
+      </button>
+    </div>
+  </section>
+
+  <section id="welcomeScreen" class="hidden px-8 py-12 text-center fade">
+    <h1 class="text-5xl font-extrabold text-pink-700 mb-3">Bienvenido/a a <span class="text-rose-500">Filolove</span></h1>
+    <p class="text-pink-500 text-lg mb-8">Responde con sinceridad y descubre qué filósofo o filósofa tiene más afinidad con tu forma de querer y pensar.</p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+      <button id="startBtn" class="px-8 py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-full text-lg font-semibold shadow-md hover:scale-105 transition">
+        Comenzar sin registrar
+      </button>
+      <button id="showAuthBtn" class="px-8 py-3 border border-pink-300 text-pink-600 rounded-full text-lg font-semibold hover:bg-pink-50 transition">
+        Iniciar sesión
+      </button>
+    </div>
+    
+    <div class="mt-8 p-4 bg-pink-50 rounded-lg border border-pink-100">
+      <h3 class="font-semibold text-pink-700 mb-2">✨ Ventajas de registrarte:</h3>
+      <ul class="text-pink-600 text-sm text-left max-w-md mx-auto">
+        <li class="mb-1">• Guarda tus resultados permanentemente</li>
+        <li class="mb-1">• Compara tus resultados a lo largo del tiempo</li>
+        <li class="mb-1">• Descubre cómo evoluciona tu pensamiento</li>
+        <li class="mb-1">• Encuentra a otras personas con tu misma filosofía</li>
+        <li>• Acceso a estadísticas personalizadas</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="quizSection" class="hidden px-8 py-6">
+    <header class="flex items-center gap-4 mb-6">
+      <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-pink-300 to-rose-300 flex items-center justify-center text-2xl shadow-lg">♥</div>
+      <div class="flex-1">
+        <h2 class="text-3xl font-extrabold text-pink-700">Filolove</h2>
+        <p class="text-sm text-pink-500">Tu viaje filosófico del corazón</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <div id="userInfo" class="hidden flex items-center gap-2">
+          <div id="quizUserAvatar" class="user-avatar w-8 h-8 text-sm"></div>
+          <span id="quizUsername" class="text-sm text-pink-600 font-medium"></span>
+        </div>
+        <div class="text-sm text-pink-400 font-medium heartbeat">20 preguntas</div>
+        <button id="logoutBtn" class="hidden px-3 py-1 text-xs text-pink-500 hover:bg-pink-50 rounded-lg">Salir</button>
+      </div>
+    </header>
+
+    <div class="mb-6">
+      <div class="flex justify-between items-center mb-2">
+        <div class="text-sm font-semibold text-pink-600">Pregunta <span id="currentIndex">1</span> / 20</div>
+        <div id="hint" class="text-xs text-pink-400">Elige una opción</div>
+      </div>
+      <div class="w-full h-3 bg-pink-50 rounded-full overflow-hidden">
+        <div id="progressBar" class="h-full bg-gradient-to-r from-pink-400 to-rose-400 rounded-full" style="width:5%"></div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+      <form id="quizForm" onsubmit="return false;">
+        <fieldset id="questionField" class="space-y-4 fade"></fieldset>
+
+        <div class="mt-6 flex justify-between items-center">
+          <button id="prevBtn" type="button" class="px-4 py-2 rounded-lg border border-pink-100 text-pink-600 hover:bg-pink-50" disabled>◀️ Anterior</button>
+
+          <div class="flex gap-3 items-center">
+            <button id="resetBtn" type="button" class="px-4 py-2 text-sm text-pink-500 hover:underline">Volver al inicio</button>
+            <button id="nextBtn" type="button" class="px-5 py-2 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-lg font-semibold">Siguiente ▶️</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div id="resultCard" class="mt-6 hidden bg-pink-50 rounded-2xl p-6 border border-rose-100 fade">
+      <div class="flex flex-col md:flex-row gap-6">
+        <div class="flex-shrink-0">
+          <div id="resultImageWrap" class="w-56 h-56 rounded-xl bg-white/80 shadow-md flex items-center justify-center overflow-hidden border border-pink-100"></div>
+        </div>
+
+        <div class="flex-1">
+          <div class="flex items-start justify-between gap-6">
+            <div>
+              <h2 id="resultTitle" class="text-2xl font-extrabold text-pink-700">Eres...</h2>
+              <p id="resultSubtitle" class="text-sm text-pink-500 mt-1"></p>
+            </div>
+            <div class="text-right">
+              <div id="congrats" class="text-lg font-semibold text-pink-700">🎉 ¡Test completado! 🎉</div>
+            </div>
+          </div>
+
+          <p id="resultDesc" class="mt-4 text-pink-600"></p>
+          <p id="resultQuote" class="mt-3 text-pink-500 italic text-sm"></p>
+
+          <div id="userStats" class="hidden mt-4 p-4 bg-white rounded-lg border border-pink-100">
+            <h3 class="text-pink-700 font-semibold mb-2">📊 Tu estadística personal</h3>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <span class="text-pink-500">Tests completados:</span>
+                <span id="testsCompleted" class="font-semibold text-pink-700 ml-2">1</span>
+              </div>
+              <div>
+                <span class="text-pink-500">Filósofo más común:</span>
+                <span id="mostCommonPhilosopher" class="font-semibold text-pink-700 ml-2">-</span>
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4 border-pink-100"/>
+          <h3 class="text-pink-700 font-semibold">Afinidad con otros pensadores</h3>
+          <div id="percentList" class="mt-3 space-y-3"></div>
+
+          <div class="mt-4 flex gap-3 flex-wrap">
+            <button id="shareBtn" type="button" class="px-4 py-2 bg-rose-500 text-white rounded-lg">Compartir resultado</button>
+            <button id="tryAgainBtn" type="button" class="px-4 py-2 border rounded-lg text-pink-600">Volver a intentar</button>
+            <button id="saveResultBtn" type="button" class="hidden px-4 py-2 bg-green-500 text-white rounded-lg">💾 Guardar resultado</button>
+            <button id="goToProfileBtn" type="button" class="hidden px-4 py-2 bg-blue-500 text-white rounded-lg">✏️ Completa tu Perfil para ver matches</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="historyScreen" class="hidden px-8 py-6">
+    <header class="flex items-center gap-4 mb-6">
+      <button id="backFromHistoryBtn" class="px-4 py-2 text-pink-600 hover:bg-pink-50 rounded-lg">← Volver</button>
+      <div class="flex-1 text-center">
+        <h2 class="text-3xl font-extrabold text-pink-700">Mi Historial Filosófico</h2>
+        <p class="text-sm text-pink-500">Evolución de tu pensamiento a lo largo del tiempo</p>
+      </div>
+      <div class="w-14"></div>
+    </header>
+
+    <div id="historyContent" class="bg-white rounded-2xl shadow-sm p-6">
+      <div id="emptyHistory" class="text-center py-12">
+        <div class="text-6xl mb-4">📚</div>
+        <h3 class="text-xl font-bold text-pink-700 mb-2">Aún no tienes resultados guardados</h3>
+        <p class="text-pink-500 mb-6">Completa el test y guarda tus resultados para ver tu evolución filosófica</p>
+        <button id="startFromHistoryBtn" class="px-6 py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-lg font-semibold">
+          Realizar mi primer test
+        </button>
+      </div>
+
+      <div id="historyList" class="hidden space-y-4">
+        </div>
+    </div>
+  </section>
+
+  <section id="profileScreen" class="hidden px-8 py-6">
+    <header class="flex items-center gap-4 mb-6">
+      <button id="backFromProfileBtn" class="px-4 py-2 text-pink-600 hover:bg-pink-50 rounded-lg">← Volver</button>
+      <div class="flex-1 text-center">
+        <h2 class="text-3xl font-extrabold text-pink-700">Mi Perfil</h2>
+        <p class="text-sm text-pink-500">Completa tu información para conectar mejor</p>
+      </div>
+      <div class="w-14"></div>
+    </header>
+
+    <div class="bg-white rounded-2xl shadow-sm p-6">
+      <div class="profile-section">
+        <h3 class="text-xl font-bold text-pink-700 mb-4">👤 Información Básica</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-pink-600 mb-2">Nombre completo</label>
+            <input type="text" id="profileName" placeholder="Tu nombre" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-pink-600 mb-2">Edad</label>
+            <input type="number" id="profileAge" placeholder="Tu edad" min="18" max="100" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-pink-600 mb-2">Ubicación</label>
+            <input type="text" id="profileLocation" placeholder="Ciudad, País" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h3 class="text-xl font-bold text-pink-700 mb-4">💭 Sobre Mí</h3>
+        <div>
+          <label class="block text-sm font-medium text-pink-600 mb-2">Biografía</label>
+          <textarea id="profileBio" placeholder="Cuéntanos sobre ti, tus intereses, tu personalidad..." rows="4" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h3 class="text-xl font-bold text-pink-700 mb-4">🎯 Aficiones e Intereses</h3>
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-pink-600 mb-2">Añade tus aficiones</label>
+          <div class="flex gap-2">
+            <input type="text" id="newHobby" placeholder="Ej: Lectura, deporte, música..." class="flex-1 px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+            <button id="addHobbyBtn" class="px-4 py-3 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Añadir</button>
+          </div>
+        </div>
+        <div id="hobbiesList" class="flex flex-wrap gap-2">
+          </div>
+      </div>
+
+      <div class="profile-section">
+        <h3 class="text-xl font-bold text-pink-700 mb-4">💕 Lo que busco</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-pink-600 mb-3">Tipo de relación</label>
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input type="radio" name="relationshipType" value="casual" class="mr-3 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Algo casual</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="relationshipType" value="open" class="mr-3 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Relación abierta</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="relationshipType" value="serious" class="mr-3 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Relación seria</span>
+              </label>
+              <label class="flex items-center">
+                <input type="radio" name="relationshipType" value="friends" class="mr-3 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Amistad</span>
+              </label>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-pink-600 mb-3">Filosofía de vida</label>
+            <div class="space-y-2">
+              <label class="flex items-center">
+                <input type="checkbox" value="meditation" class="mr-3 rounded border-pink-300 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Meditación</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" value="ecology" class="mr-3 rounded border-pink-300 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Ecología</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" value="activism" class="mr-3 rounded border-pink-300 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Activismo</span>
+              </label>
+              <label class="flex items-center">
+                <input type="checkbox" value="travel" class="mr-3 rounded border-pink-300 text-pink-500 focus:ring-pink-500">
+                <span class="text-pink-700">Viajes</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h3 class="text-xl font-bold text-pink-700 mb-4">🌟 Más sobre mí</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label class="block text-sm font-medium text-pink-600 mb-2">Estilo de comunicación</label>
+            <select id="communicationStyle" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <option value="">Selecciona tu estilo</option>
+              <option value="direct">Directo y claro</option>
+              <option value="diplomatic">Diplomático</option>
+              <option value="emotional">Emocional y expresivo</option>
+              <option value="analytical">Analítico y racional</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-pink-600 mb-2">Nivel de energía</label>
+            <select id="energyLevel" class="w-full px-4 py-3 border border-pink-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <option value="">¿Cómo eres?</option>
+              <option value="calm">Tranquilo/a</option>
+              <option value="moderate">Equilibrado/a</option>
+              <option value="energetic">Enérgico/a</option>
+              <option value="intense">Intenso/a</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="mt-4">
+          <label class="block text-sm font-medium text-pink-600 mb-2">Mi filósofo match</label>
+          <div id="philosopherMatch" class="text-lg font-semibold text-pink-700 bg-pink-50 p-3 rounded-lg">
+            </div>
+        </div>
+      </div>
+
+      <div class="flex gap-3 justify-end mt-8">
+        <button id="cancelProfileBtn" class="px-6 py-3 border border-pink-300 text-pink-600 rounded-lg hover:bg-pink-50">
+          Cancelar
+        </button>
+        <button id="saveProfileBtn" class="px-6 py-3 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-lg font-semibold hover:scale-105 transition">
+          💾 Guardar y Ver Matches
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section id="matchScreen" class="hidden px-8 py-6">
+    <header class="flex items-center gap-4 mb-6">
+      <button id="backFromMatchBtn" class="px-4 py-2 text-pink-600 hover:bg-pink-50 rounded-lg">← Volver</button>
+      <div class="flex-1 text-center">
+        <h2 class="text-3xl font-extrabold text-pink-700">Encuentra tu Filo-Match</h2>
+        <p class="text-sm text-pink-500">Personas registradas con perfiles completos</p>
+      </div>
+      <div class="w-14"></div>
+    </header>
+
+    <div class="bg-white rounded-2xl shadow-sm p-6 max-h-[70vh] overflow-y-auto">
+      
+      <div id="noMatchesMessage" class="hidden text-center py-12">
+        <div class="text-6xl mb-4">💔</div>
+        <h3 class="text-xl font-bold text-pink-700 mb-2">Oops, parece ser que no hay nadie que comparta tu metafísica.</h3>
+        <p class="text-pink-500 mb-6">Aún no hay otros usuarios con perfiles completos. ¡Vuelve a intentarlo más tarde!</p>
+      </div>
+
+      <div id="matchListContainer" class="hidden space-y-4">
+        </div>
+    </div>
+  </section>
+
+  <footer class="px-8 py-4 text-center text-xs text-pink-400 border-t border-pink-50">
+    Hecho con cariño · Filolove · Sistema seguro con contraseñas
+  </footer>
+</main>
+
+<script>
+// ========== SISTEMA DE USUARIOS MEJORADO CON PERFIL ==========
+class UserSystem {
+  constructor() {
+    this.currentUser = null;
+    this.users = JSON.parse(localStorage.getItem('filolove_users')) || {};
+    this.results = JSON.parse(localStorage.getItem('filolove_results')) || {};
+    this.profiles = JSON.parse(localStorage.getItem('filolove_profiles')) || {};
+  }
+
+  // Función para hashear contraseñas (simple para demo)
+  hashPassword(password) {
+    let hash = 0;
+    for (let i = 0; i < password.length; i++) {
+      const char = password.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash;
+    }
+    return hash.toString();
+  }
+
+  registerUser(username, email = '', password) {
+    // Verificar si el usuario ya existe
+    const existingUser = Object.values(this.users).find(user => 
+      user.username.toLowerCase() === username.toLowerCase()
+    );
+    
+    if (existingUser) {
+      throw new Error("El nombre de usuario ya existe");
+    }
+
+    if (password.length < 4) {
+      throw new Error("La contraseña debe tener al menos 4 caracteres");
+    }
+
+    const userId = this.generateUserId();
+    const user = {
+      id: userId,
+      username: username.trim(),
+      email: email.trim(),
+      passwordHash: this.hashPassword(password),
+      createdAt: new Date().toISOString(),
+      avatarColor: this.generateAvatarColor(),
+      privacyAccepted: true,
+      privacyAcceptedDate: new Date().toISOString()
+    };
+    
+    this.users[userId] = user;
+    this.results[userId] = [];
+    this.currentUser = user;
+    
+    this.saveToStorage();
+    this.saveSession();
+    return user;
+  }
+
+  loginUser(username, password) {
+    const user = Object.values(this.users).find(user => 
+      user.username.toLowerCase() === username.toLowerCase()
+    );
+    
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+
+    if (user.passwordHash !== this.hashPassword(password)) {
+      throw new Error("Contraseña incorrecta");
+    }
+
+    this.currentUser = user;
+    this.saveSession();
+    return user;
+  }
+
+  logout() {
+    this.currentUser = null;
+    this.clearSession();
+  }
+
+  saveTestResult(result) {
+    if (!this.currentUser) return false;
+    
+    const testResult = {
+      id: this.generateResultId(),
+      date: new Date().toISOString(),
+      philosopher: result.philosopher,
+      percentage: result.percentage,
+      scores: result.scores
+    };
+    
+    this.results[this.currentUser.id].push(testResult);
+    this.saveToStorage();
+    return true;
+  }
+
+  saveUserProfile(profileData) {
+    if (!this.currentUser) return false;
+    
+    this.profiles[this.currentUser.id] = {
+      ...profileData,
+      updatedAt: new Date().toISOString(),
+      // Guardamos el filósofo actual en el perfil para fácil acceso
+      philosopher: this.getUserCurrentPhilosopher()
+    };
+    
+    this.saveToStorage();
+    return true;
+  }
+
+  getUserProfile() {
+    if (!this.currentUser) return null;
+    // Devolvemos el perfil guardado o un perfil por defecto si no existe
+    return this.profiles[this.currentUser.id] || this.getDefaultProfile();
+  }
+
+  getDefaultProfile() {
+    return {
+      name: '',
+      age: '',
+      location: '',
+      bio: '',
+      hobbies: [],
+      relationshipType: '',
+      lifestyle: [],
+      communicationStyle: '',
+      energyLevel: '',
+      philosopher: this.getUserCurrentPhilosopher() // Incluimos el filósofo
+    };
+  }
+
+  getUserCurrentPhilosopher() {
+    const history = this.getUserHistory();
+    if (history.length === 0) return '';
+    // Devuelve el 'key' del filósofo del último test
+    return history[history.length - 1].philosopher;
+  }
+
+  getUserHistory() {
+    if (!this.currentUser) return [];
+    return this.results[this.currentUser.id] || [];
+  }
+
+  getUserStats() {
+    const history = this.getUserHistory();
+    return {
+      testsCompleted: history.length,
+      mostCommonPhilosopher: this.getMostCommonPhilosopher(history),
+      firstTestDate: history.length > 0 ? history[0].date : null,
+      lastTestDate: history.length > 0 ? history[history.length - 1].date : null
+    };
+  }
+
+  getMostCommonPhilosopher(history) {
+    if (history.length === 0) return null;
+    
+    const philosopherCount = {};
+    history.forEach(result => {
+      philosopherCount[result.philosopher] = (philosopherCount[result.philosopher] || 0) + 1;
+    });
+    
+    return Object.keys(philosopherCount).reduce((a, b) => 
+      philosopherCount[a] > philosopherCount[b] ? a : b
+    );
+  }
+  
+  // NUEVO: Método para obtener todos los demás usuarios con perfiles
+  getMatches(currentUserId) {
+    return Object.values(this.users)
+      .filter(user => user.id !== currentUserId) // Excluir al usuario actual
+      .map(user => {
+        const profile = this.profiles[user.id] || null;
+        return {
+          ...user, // id, username, avatarColor
+          profile: profile // perfil completo
+        };
+      })
+      // Solo devolver usuarios que hayan rellenado su perfil (usamos 'name' como indicador)
+      .filter(user => user.profile && user.profile.name);
+  }
+
+
+  generateUserId() {
+    return 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  }
+
+  generateResultId() {
+    return 'result_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+  }
+
+  generateAvatarColor() {
+    const colors = [
+      ['#f472b6', '#ec4899'],
+      ['#60a5fa', '#3b82f6'],
+      ['#34d399', '#10b981'],
+      ['#fbbf24', '#f59e0b'],
+      ['#a78bfa', '#8b5cf6']
+    ];
+    return colors[Math.floor(Math.random() * colors.length)];
+  }
+
+  saveToStorage() {
+    localStorage.setItem('filolove_users', JSON.stringify(this.users));
+    localStorage.setItem('filolove_results', JSON.stringify(this.results));
+    localStorage.setItem('filolove_profiles', JSON.stringify(this.profiles));
+  }
+
+  hasActiveSession() {
+    const savedUserId = localStorage.getItem('filolove_current_user');
+    if (savedUserId && this.users[savedUserId]) {
+      this.currentUser = this.users[savedUserId];
+      return true;
+    }
+    return false;
+  }
+
+  saveSession() {
+    if (this.currentUser) {
+      localStorage.setItem('filolove_current_user', this.currentUser.id);
+    }
+  }
+
+  clearSession() {
+    localStorage.removeItem('filolove_current_user');
+  }
+}
+
+// ========== FUNCIONES PARA EL MODAL DE PRIVACIDAD ==========
+function showPrivacyModal() {
+  document.getElementById('privacyModal').classList.remove('hidden');
+}
+
+function hidePrivacyModal() {
+  document.getElementById('privacyModal').classList.add('hidden');
+}
+
+// ========== FUNCIÓN PARA MOSTRAR/OCULTAR CONTRASEÑA ==========
+function togglePassword(inputId) {
+  const input = document.getElementById(inputId);
+  const toggle = input.nextElementSibling;
+  
+  if (input.type === 'password') {
+    input.type = 'text';
+    toggle.textContent = '🙈';
+  } else {
+    input.type = 'password';
+    toggle.textContent = '👁️';
+  }
+}
+
+// ========== FILÓSOFOS ==========
+const philosophers = {
+  socrates: { 
+    name: "Sócrates", 
+    desc: "Valoras el diálogo y la indagación honesta. Eres una persona que busca la verdad a través del cuestionamiento constante.",
+    quote: "Solo sé que no sé nada."
+  },
+  nietzsche: { 
+    name: "Friedrich Nietzsche", 
+    desc: "La intensidad, la autenticidad y la superación personal te mueven. Crees en crear tus propios valores.",
+    quote: "Lo que no me mata, me hace más fuerte."
+  },
+  kant: { 
+    name: "Immanuel Kant", 
+    desc: "Buscas coherencia moral y principios universales en tus vínculos. Actúas por deber, no por interés.",
+    quote: "Obra solo según aquella máxima por la cual puedas querer que se torne ley universal."
+  },
+  aristotle: { 
+    name: "Aristóteles", 
+    desc: "Prefieres la prudencia, la experiencia y el equilibrio en el amor. Buscas la virtud en el término medio.",
+    quote: "La excelencia no es un acto, sino un hábito."
+  },
+  descartes: { 
+    name: "René Descartes", 
+    desc: "Tu razón y claridad guían tus decisiones afectivas. Confías en el método y la duda sistemática.",
+    quote: "Pienso, luego existo."
+  },
+  spinoza: { 
+    name: "Baruch Spinoza", 
+    desc: "Tiendes a integrar emoción y pensamiento en armonía. Ves a Dios en la naturaleza y la razón.",
+    quote: "La paz no es la ausencia de guerra, es una virtud que nace de la fortaleza del alma."
+  },
+  confucius: { 
+    name: "Confucio", 
+    desc: "La virtud cotidiana y el respeto forman la base de tus relaciones. Valoras la armonía social.",
+    quote: "No hagas a otros lo que no quieres que te hagan a ti."
+  },
+  beauvoir: { 
+    name: "Simone de Beauvoir", 
+    desc: "Amas desde la libertad y la lucha por la igualdad. Crees que no se nace mujer, se llega a serlo.",
+    quote: "No se nace mujer, se llega a serlo."
+  },
+  marx: { 
+    name: "Karl Marx", 
+    desc: "Te interesan las causas sociales y la justicia en lo afectivo. Analizas las relaciones desde lo material.",
+    quote: "Los filósofos no han hecho más que interpretar de diversos modo el mundo, pero de lo que se trata es de transformarlo."
+  },
+  lao: { 
+    name: "Lao-Tsé", 
+    desc: "Prefieres fluir, adaptarte y hallar la sencillez en el amor. Sigues el camino del no esfuerzo.",
+    quote: "Un viaje de mil millas comienza con el primer paso."
+  }
+};
+
+// ========== PREGUNTAS COMPLETAS (20) ==========
+const questions = [
+  { q: "Cuando conoces a alguien, ¿qué te interesa primero?", opts:[
+      { t: "La forma en que razona sobre temas importantes.", v: "socrates" },
+      { t: "Su energía y forma de vivir intensamente.", v: "nietzsche" },
+      { t: "Si actúa con coherencia y principios.", v: "kant" },
+      { t: "Si es equilibrado y prudente.", v: "aristotle" }
+    ]},
+  { q: "En una relación, buscas principalmente:", opts:[
+      { t: "Crecimiento mutuo y aprendizaje.", v: "socrates" },
+      { t: "Pasión y autenticidad.", v: "nietzsche" },
+      { t: "Estabilidad y compromiso.", v: "kant" },
+      { t: "Armonía y comprensión.", v: "aristotle" }
+    ]},
+  { q: "¿Cómo manejas los conflictos?", opts:[
+      { t: "Dialogando hasta encontrar la verdad.", v: "socrates" },
+      { t: "Enfrentándolos con intensidad.", v: "nietzsche" },
+      { t: "Aplicando principios morales.", v: "kant" },
+      { t: "Buscando el término medio.", v: "aristotle" }
+    ]},
+  { q: "Tu idea del amor es:", opts:[
+      { t: "Una búsqueda conjunta de la verdad.", v: "socrates" },
+      { t: "Una fuerza transformadora y vital.", v: "nietzsche" },
+      { t: "Un deber que se cumple con responsabilidad.", v: "kant" },
+      { t: "Una virtud que se perfecciona con el tiempo.", v: "aristotle" }
+    ]},
+  { q: "¿Qué valoras más en una persona?", opts:[
+      { t: "Su capacidad de cuestionarse todo.", v: "socrates" },
+      { t: "Su voluntad de poder y autosuperación.", v: "nietzsche" },
+      { t: "Su integridad moral.", v: "kant" },
+      { t: "Su sabiduría práctica.", v: "aristotle" }
+    ]},
+  { q: "Cuando amas, tiendes a:", opts:[
+      { t: "Cuestionar y profundizar en la relación.", v: "socrates" },
+      { t: "Vivir el momento con intensidad.", v: "nietzsche" },
+      { t: "Seguir normas y compromisos.", v: "kant" },
+      { t: "Buscar equilibrio y moderación.", v: "aristotle" }
+    ]},
+  { q: "Para ti, la felicidad en el amor viene de:", opts:[
+      { t: "Compartir la búsqueda del conocimiento.", v: "socrates" },
+      { t: "La creación de valores propios.", v: "nietzsche" },
+      { t: "Actuar por deber y no por interés.", v: "kant" },
+      { t: "Encontrar la virtud en la relación.", v: "aristotle" }
+    ]},
+  { q: "¿Cómo enfrentas la soledad?", opts:[
+      { t: "Como oportunidad para reflexionar.", v: "socrates" },
+      { t: "Como desafío para fortalecerme.", v: "nietzsche" },
+      { t: "Manteniendo mi dignidad moral.", v: "kant" },
+      { t: "Buscando actividades que me realicen.", v: "aristotle" }
+    ]},
+  { q: "En el amor, prefieres:", opts:[
+      { t: "La verdad incómoda antes que la mentira placentera.", v: "socrates" },
+      { t: "La pasión auténtica antes que la seguridad aburrida.", v: "nietzsche" },
+      { t: "La estabilidad moral antes que el placer momentáneo.", v: "kant" },
+      { t: "El equilibrio razonable antes que los extremos.", v: "aristotle" }
+    ]},
+  { q: "Tu mayor miedo en una relación es:", opts:[
+      { t: "La ignorancia y falta de crecimiento.", v: "socrates" },
+      { t: "La mediocridad y conformismo.", v: "nietzsche" },
+      { t: "La traición a los principios.", v: "kant" },
+      { t: "El desequilibrio y falta de armonía.", v: "aristotle" }
+    ]},
+  { q: "¿Qué tipo de conversaciones prefieres?", opts:[
+      { t: "Las que cuestionan lo establecido.", v: "socrates" },
+      { t: "Las que exploran pasiones profundas.", v: "nietzsche" },
+      { t: "Las que tratan sobre ética y moral.", v: "kant" },
+      { t: "Las que buscan sabiduría práctica.", v: "aristotle" }
+    ]},
+  { q: "Cuando te decepcionan:", opts:[
+      { t: "Analizas qué salió mal y por qué.", v: "socrates" },
+      { t: "Lo usas como fuel para crecer.", v: "nietzsche" },
+      { t: "Mantienes tu dignidad y principios.", v: "kant" },
+      { t: "Buscas aprender para mejorar.", v: "aristotle" }
+    ]},
+  { q: "Para ti, el amor ideal es:", opts:[
+      { t: "Un diálogo eterno que busca la verdad.", v: "socrates" },
+      { t: "Una danza de voluntades creadoras.", v: "nietzsche" },
+      { t: "Un compromiso basado en el respeto mutuo.", v: "kant" },
+      { t: "Una amistad virtuosa que perdura.", v: "aristotle" }
+    ]},
+  { q: "¿Cómo manejas los celos?", opts:[
+      { t: "Razonando sobre su origen.", v: "socrates" },
+      { t: "Transformándolos en autoafirmación.", v: "nietzsche" },
+      { t: "Aplicando principios de confianza.", v: "kant" },
+      { t: "Buscando el equilibrio emocional.", v: "aristotle" }
+    ]},
+  { q: "En una discusión, tu estilo es:", opts:[
+      { t: "Hacer preguntas que revelen la verdad.", v: "socrates" },
+      { t: "Expresar tu perspectiva con intensidad.", v: "nietzsche" },
+      { t: "Apelar a principios universales.", v: "kant" },
+      { t: "Buscar el punto medio razonable.", v: "aristotle" }
+    ]},
+  { q: "Valoras más:", opts:[
+      { t: "La sabiduría que nace del cuestionamiento.", v: "socrates" },
+      { t: "La fuerza para crear tu propio camino.", v: "nietzsche" },
+      { t: "La coherencia con tus principios.", v: "kant" },
+      { t: "La prudencia en las decisiones.", v: "aristotle" }
+    ]},
+  { q: "Tu forma de demostrar amor es:", opts:[
+      { t: "Compartiendo preguntas profundas.", v: "socrates" },
+      { t: "Siendo intensamente auténtico.", v: "nietzsche" },
+      { t: "Cumpliendo tus compromisos.", v: "kant" },
+      { t: "Buscando el bien común.", v: "aristotle" }
+    ]},
+  { q: "Cuando hay problemas, primero:", opts:[
+      { t: "Analizas las causas profundas.", v: "socrates" },
+      { t: "Actúas con determinación.", v: "nietzsche" },
+      { t: "Consultas tus principios morales.", v: "kant" },
+      { t: "Buscas la solución más equilibrada.", v: "aristotle" }
+    ]},
+  { q: "Para ti, el perdón es:", opts:[
+      { t: "Una oportunidad para aprender.", v: "socrates" },
+      { t: "Un acto de autoafirmación.", v: "nietzsche" },
+      { t: "Un deber moral.", v: "kant" },
+      { t: "Una virtud que restaura la armonía.", v: "aristotle" }
+    ]},
+  { q: "Cuando miras al futuro, te enfocas en:", opts:[
+      { t: "Construir ideas que mejoren la convivencia.", v: "socrates" },
+      { t: "Crear una vida auténtica y con sentido.", v: "nietzsche" },
+      { t: "Promover igualdad y condiciones justas.", v: "marx" },
+      { t: "Encontrar paz interior y equilibrio.", v: "lao" }
+    ]}
+];
+
+// ========== INICIALIZACIÓN ==========
+const userSystem = new UserSystem();
+let answers = Array(questions.length).fill(null);
+let current = 0;
+let currentResult = null;
+
+// ========== REFERENCIAS DOM ==========
+const authScreen = document.getElementById("authScreen");
+const welcomeScreen = document.getElementById("welcomeScreen");
+const quizSection = document.getElementById("quizSection");
+const historyScreen = document.getElementById("historyScreen");
+const profileScreen = document.getElementById("profileScreen");
+// NUEVO
+const matchScreen = document.getElementById("matchScreen");
+
+// Elementos de autenticación
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+const userWelcome = document.getElementById("userWelcome");
+
+// Campos de formulario
+const loginUsername = document.getElementById("loginUsername");
+const loginPassword = document.getElementById("loginPassword");
+const registerUsername = document.getElementById("registerUsername");
+const registerEmail = document.getElementById("registerEmail");
+const registerPassword = document.getElementById("registerPassword");
+const confirmPassword = document.getElementById("confirmPassword");
+const privacyCheckbox = document.getElementById("privacyCheckbox");
+
+// Botones de autenticación
+const loginBtn = document.getElementById("loginBtn");
+const registerBtn = document.getElementById("registerBtn");
+const showRegisterBtn = document.getElementById("showRegisterBtn");
+const showLoginBtn = document.getElementById("showLoginBtn");
+const continueWithoutAccount = document.getElementById("continueWithoutAccount");
+const closePrivacyModal = document.getElementById("closePrivacyModal");
+
+// Elementos de usuario
+const userInfo = document.getElementById("userInfo");
+const quizUserAvatar = document.getElementById("quizUserAvatar");
+const quizUsername = document.getElementById("quizUsername");
+const logoutBtn = document.getElementById("logoutBtn");
+const editProfileBtn = document.getElementById("editProfileBtn");
+// NUEVO
+const findMatchesBtn = document.getElementById("findMatchesBtn");
+
+// Elementos de resultados
+const userStats = document.getElementById("userStats");
+const testsCompleted = document.getElementById("testsCompleted");
+const mostCommonPhilosopher = document.getElementById("mostCommonPhilosopher");
+const saveResultBtn = document.getElementById("saveResultBtn");
+const goToProfileBtn = document.getElementById("goToProfileBtn");
+
+// Elementos de historial
+const backFromHistoryBtn = document.getElementById("backFromHistoryBtn");
+const emptyHistory = document.getElementById("emptyHistory");
+const historyList = document.getElementById("historyList");
+const startFromHistoryBtn = document.getElementById("startFromHistoryBtn");
+
+// Elementos del quiz
+const startBtn = document.getElementById("startBtn");
+const showAuthBtn = document.getElementById("showAuthBtn");
+const startWithUserBtn = document.getElementById("startWithUserBtn");
+const viewHistoryBtn = document.getElementById("viewHistoryBtn");
+const qField = document.getElementById("questionField");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+const resetBtn = document.getElementById("resetBtn");
+const currentIndexSpan = document.getElementById("currentIndex");
+const progressBar = document.getElementById("progressBar");
+const hint = document.getElementById("hint");
+const resultCard = document.getElementById("resultCard");
+const resultTitle = document.getElementById("resultTitle");
+const resultSubtitle = document.getElementById("resultSubtitle");
+const resultDesc = document.getElementById("resultDesc");
+const resultQuote = document.getElementById("resultQuote");
+const percentList = document.getElementById("percentList");
+const tryAgainBtn = document.getElementById("tryAgainBtn");
+const shareBtn = document.getElementById("shareBtn");
+
+// Elementos del perfil
+const backFromProfileBtn = document.getElementById("backFromProfileBtn");
+const profileName = document.getElementById("profileName");
+const profileAge = document.getElementById("profileAge");
+const profileLocation = document.getElementById("profileLocation");
+const profileBio = document.getElementById("profileBio");
+const newHobby = document.getElementById("newHobby");
+const addHobbyBtn = document.getElementById("addHobbyBtn");
+const hobbiesList = document.getElementById("hobbiesList");
+const communicationStyle = document.getElementById("communicationStyle");
+const energyLevel = document.getElementById("energyLevel");
+const philosopherMatch = document.getElementById("philosopherMatch");
+const saveProfileBtn = document.getElementById("saveProfileBtn");
+const cancelProfileBtn = document.getElementById("cancelProfileBtn");
+
+// NUEVO: Elementos de Match
+const backFromMatchBtn = document.getElementById("backFromMatchBtn");
+const matchListContainer = document.getElementById("matchListContainer");
+const noMatchesMessage = document.getElementById("noMatchesMessage");
+
+// ========== FUNCIONES DE INTERFAZ ==========
+function updateUserInterface() {
+  if (userSystem.currentUser) {
+    const user = userSystem.currentUser;
+    
+    // Actualizar elementos de usuario
+    quizUserAvatar.textContent = user.username.charAt(0).toUpperCase();
+    quizUserAvatar.style.background = `linear-gradient(45deg, ${user.avatarColor[0]}, ${user.avatarColor[1]})`;
+    quizUsername.textContent = user.username;
+    
+    const userAvatar = document.getElementById("userAvatar");
+    const welcomeUser = document.getElementById("welcomeUser");
+    userAvatar.textContent = user.username.charAt(0).toUpperCase();
+    userAvatar.style.background = `linear-gradient(45deg, ${user.avatarColor[0]}, ${user.avatarColor[1]})`;
+    welcomeUser.textContent = `¡Hola, ${user.username}!`;
+    
+    // Mostrar elementos de usuario
+    userInfo.classList.remove("hidden");
+    logoutBtn.classList.remove("hidden");
+    userWelcome.classList.remove("hidden");
+    loginForm.classList.add("hidden");
+    registerForm.classList.add("hidden");
+    
+    // Mostrar botón de perfil si tiene resultados
+    const history = userSystem.getUserHistory();
+    if (history.length > 0) {
+      editProfileBtn.classList.remove("hidden");
+    } else {
+      editProfileBtn.classList.add("hidden");
+    }
+    
+    // NUEVO: Mostrar botón de matches si tiene perfil completo
+    const profile = userSystem.getUserProfile();
+    if (history.length > 0 && profile && profile.name) {
+      findMatchesBtn.classList.remove("hidden");
+    } else {
+      findMatchesBtn.classList.add("hidden");
+    }
+    
+  } else {
+    // Ocultar elementos de usuario
+    userInfo.classList.add("hidden");
+    logoutBtn.classList.add("hidden");
+    saveResultBtn.classList.add("hidden");
+    userStats.classList.add("hidden");
+    userWelcome.classList.add("hidden");
+    editProfileBtn.classList.add("hidden");
+    findMatchesBtn.classList.add("hidden"); // NUEVO
+    loginForm.classList.remove("hidden");
+    registerForm.classList.add("hidden");
+  }
+}
+
+function showScreen(screen) {
+  // Ocultar todas las pantallas
+  authScreen.classList.add("hidden");
+  welcomeScreen.classList.add("hidden");
+  quizSection.classList.add("hidden");
+  historyScreen.classList.add("hidden");
+  profileScreen.classList.add("hidden");
+  matchScreen.classList.add("hidden"); // NUEVO
+  resultCard.classList.add("hidden");
+  
+  // Mostrar la pantalla solicitada
+  screen.classList.remove("hidden");
+}
+
+// ========== GESTIÓN DE PERFIL ==========
+function showProfileScreen() {
+  loadProfileData();
+  showScreen(profileScreen);
+}
+
+function loadProfileData() {
+  if (!userSystem.currentUser) return;
+  
+  // Usamos getUserProfile que devuelve el perfil o uno por defecto
+  const profile = userSystem.getUserProfile();
+  
+  // Llenar campos del formulario
+  profileName.value = profile.name || '';
+  profileAge.value = profile.age || '';
+  profileLocation.value = profile.location || '';
+  profileBio.value = profile.bio || '';
+  
+  // Cargar aficiones
+  renderHobbies(profile.hobbies || []);
+  
+  // Tipo de relación
+  // Limpiar radios antes de marcar
+  document.querySelectorAll('input[name="relationshipType"]').forEach(radio => radio.checked = false);
+  if (profile.relationshipType) {
+    const relRadio = document.querySelector(`input[name="relationshipType"][value="${profile.relationshipType}"]`);
+    if (relRadio) relRadio.checked = true;
+  }
+  
+  // Estilo de vida
+  // Limpiar checkboxes antes de marcar
+  profileScreen.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+  (profile.lifestyle || []).forEach(value => {
+    const checkbox = profileScreen.querySelector(`input[type="checkbox"][value="${value}"]`);
+    if (checkbox) checkbox.checked = true;
+  });
+  
+  // Otros campos
+  communicationStyle.value = profile.communicationStyle || '';
+  energyLevel.value = profile.energyLevel || '';
+  
+  // Mostrar filósofo match
+  const philosopherKey = profile.philosopher; // 'socrates'
+  if (philosopherKey && philosophers[philosopherKey]) {
+    philosopherMatch.textContent = philosophers[philosopherKey].name;
+  } else {
+    philosopherMatch.textContent = 'Completa un test para verlo';
+  }
+}
+
+
+function renderHobbies(hobbies) {
+  hobbiesList.innerHTML = '';
+  
+  hobbies.forEach(hobby => {
+    const tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.innerHTML = `
+      ${hobby}
+      <button type="button" onclick="removeHobby('${hobby}')" class="ml-2 text-pink-500 hover:text-pink-700">×</button>
+    `;
+    hobbiesList.appendChild(tag);
+  });
+}
+
+function addHobby() {
+  const hobby = newHobby.value.trim();
+  
+  if (!hobby) return;
+  
+  const currentHobbies = Array.from(hobbiesList.children).map(tag => 
+    tag.textContent.replace('×', '').trim()
+  );
+  
+  if (!currentHobbies.includes(hobby)) {
+    const tag = document.createElement('div');
+    tag.className = 'tag';
+    tag.innerHTML = `
+      ${hobby}
+      <button type="button" onclick="removeHobby('${hobby}')" class="ml-2 text-pink-500 hover:text-pink-700">×</button>
+    `;
+    hobbiesList.appendChild(tag);
+  }
+  
+  newHobby.value = '';
+}
+
+function removeHobby(hobbyToRemove) {
+  const tags = Array.from(hobbiesList.children);
+  
+  tags.forEach(tag => {
+    if (tag.textContent.includes(hobbyToRemove)) {
+      hobbiesList.removeChild(tag);
+    }
+  });
+}
+
+// MODIFICADO: Ahora devuelve un booleano
+function saveProfile() {
+  if (!userSystem.currentUser) return false;
+  
+  // Recoger datos del formulario
+  const profileData = {
+    name: profileName.value,
+    age: profileAge.value,
+    location: profileLocation.value,
+    bio: profileBio.value,
+    hobbies: Array.from(hobbiesList.children).map(tag => 
+      tag.textContent.replace('×', '').trim()
+    ),
+    relationshipType: document.querySelector('input[name="relationshipType"]:checked')?.value || '',
+    lifestyle: Array.from(profileScreen.querySelectorAll('input[type="checkbox"]:checked')).map(cb => cb.value),
+    communicationStyle: communicationStyle.value,
+    energyLevel: energyLevel.value
+  };
+  
+  // Validar que al menos el nombre esté
+  if (!profileData.name) {
+    alert("Por favor, introduce al menos tu nombre.");
+    return false;
+  }
+  
+  return userSystem.saveUserProfile(profileData);
+}
+
+// ========== NUEVO: FUNCIONES DE MATCHMAKING ==========
+
+// Función principal para mostrar los matches
+function displayMatches() {
+  const currentUser = userSystem.currentUser;
+  if (!currentUser) return;
+  
+  const currentUserProfile = userSystem.getUserProfile();
+  const currentUserPhilosopherKey = currentUserProfile.philosopher;
+  const currentUserPhilosopherName = currentUserPhilosopherKey ? philosophers[currentUserPhilosopherKey].name : null;
+  
+  const allMatches = userSystem.getMatches(currentUser.id);
+
+  if (allMatches.length === 0) {
+    // No hay nadie más registrado con perfil
+    matchListContainer.innerHTML = '';
+    matchListContainer.classList.add('hidden');
+    noMatchesMessage.classList.remove('hidden');
+    return;
+  }
+
+  // Hay matches, mostramos la lista y ocultamos el mensaje
+  matchListContainer.classList.remove('hidden');
+  noMatchesMessage.classList.add('hidden');
+  matchListContainer.innerHTML = ''; // Limpiar lista anterior
+
+  // Separar matches
+  const primaryMatches = allMatches.filter(
+    user => user.profile.philosopher === currentUserPhilosopherKey
+  );
+  
+  const secondaryMatches = allMatches.filter(
+    user => user.profile.philosopher !== currentUserPhilosopherKey
+  );
+
+  // Renderizar matches primarios (mismo filósofo)
+  if (primaryMatches.length > 0) {
+    const title = document.createElement('h3');
+    title.className = "text-2xl font-bold text-pink-700 mb-4";
+    title.textContent = `Tu misma metafísica (${currentUserPhilosopherName})`;
+    matchListContainer.appendChild(title);
+    
+    primaryMatches.forEach(user => {
+      matchListContainer.appendChild(createMatchCard(user, true));
+    });
+  }
+
+  // Renderizar matches secundarios (otros filósofos)
+  if (secondaryMatches.length > 0) {
+    const title = document.createElement('h3');
+    title.className = "text-2xl font-bold text-gray-700 mt-8 mb-4";
+    title.textContent = "Otros exploradores filosóficos";
+    matchListContainer.appendChild(title);
+    
+    secondaryMatches.forEach(user => {
+      matchListContainer.appendChild(createMatchCard(user, false));
+    });
+  }
+  
+  // Si hay matches primarios pero no secundarios, o viceversa,
+  // la lógica anterior funciona. Pero si NO hay matches primarios,
+  // mostramos el mensaje específico.
+  if (primaryMatches.length === 0) {
+      // Usamos un 'prepend' para ponerlo al principio
+      const noMatchTitle = document.createElement('div');
+      noMatchTitle.className = "text-center py-6";
+      noMatchTitle.innerHTML = `
+        <div class="text-4xl mb-3">🧐</div>
+        <h3 class="text-lg font-bold text-pink-700">Oops, parece ser que no hay nadie que comparta tu metafísica.</h3>
+        <p class="text-pink-500">Pero no te preocupes, ¡aquí tienes otros pensadores!</p>
+      `;
+      matchListContainer.prepend(noMatchTitle);
+  }
+}
+
+// Función para crear la tarjeta HTML de un usuario
+function createMatchCard(user, isPrimary) {
+  const card = document.createElement('div');
+  // Reutilizamos la clase 'profile-section' y añadimos estilos
+  card.className = `profile-section flex flex-col md:flex-row gap-4 ${isPrimary ? 'border-2 border-pink-400 bg-pink-50/50' : 'border-gray-200'}`;
+  
+  const { username, avatarColor, profile } = user;
+  const philosopherName = profile.philosopher ? philosophers[profile.philosopher].name : 'Indefinido';
+  
+  // Convertir array de hobbies a HTML
+  const hobbiesHTML = profile.hobbies.map(hobby => `<span class="tag">${hobby}</span>`).join(' ');
+
+  card.innerHTML = `
+    <div class="flex-shrink-0 text-center">
+      <div class="user-avatar w-16 h-16 text-2xl mx-auto" style="background: linear-gradient(45deg, ${avatarColor[0]}, ${avatarColor[1]})">
+        ${username.charAt(0).toUpperCase()}
+      </div>
+      <p class="text-sm text-pink-500 mt-1">@${username}</p>
+    </div>
+    
+    <div class="flex-1">
+      <div class="flex justify-between items-start">
+        <div>
+          <h4 class="text-xl font-bold text-pink-700">${profile.name}${profile.age ? `, ${profile.age}` : ''}</h4>
+          ${profile.location ? `<p class="text-sm text-gray-500 mt-1">📍 ${profile.location}</p>` : ''}
+        </div>
+        ${isPrimary ? '<span class="flex-shrink-0 px-3 py-1 bg-pink-500 text-white rounded-full text-xs font-semibold">MATCH</span>' : ''}
+      </div>
+      
+      <p class="text-gray-700 my-3 text-sm">${profile.bio || 'Sin biografía.'}</p>
+      
+      <div class="grid grid-cols-2 gap-4 border-t border-pink-100 pt-3">
+        <div>
+          <h5 class="text-xs text-pink-600 font-semibold">FILÓSOFO/A</h5>
+          <p class="text-pink-700 font-medium text-sm">${philosopherName}</p>
+        </div>
+         <div>
+          <h5 class="text-xs text-pink-600 font-semibold">BUSCA</h5>
+          <p class="text-pink-700 font-medium text-sm capitalize">${profile.relationshipType || 'No especificado'}</p>
+        </div>
+      </div>
+      
+      ${hobbiesHTML ? `
+        <div class="border-t border-pink-100 mt-3 pt-3">
+          <h5 class="text-xs text-pink-600 font-semibold mb-2">AFICIONES</h5>
+          <div class="flex flex-wrap gap-2">${hobbiesHTML}</div>
+        </div>` 
+      : ''}
+    </div>
+  `;
+  return card;
+}
+
+
+// ========== FUNCIONES DEL QUIZ ==========
+function renderQuestion(index) {
+  const question = questions[index];
+  qField.innerHTML = '';
+  
+  const legend = document.createElement("legend");
+  legend.className = "text-xl font-bold text-pink-700";
+  legend.textContent = question.q;
+  qField.appendChild(legend);
+
+  const optionsDiv = document.createElement("div");
+  optionsDiv.className = "grid gap-3 mt-4 md:grid-cols-2";
+
+  question.opts.forEach((option, optionIndex) => {
+    const label = document.createElement("label");
+    label.className = "option-card flex items-center gap-4 p-3 rounded-xl border border-pink-50";
+    
+    if (answers[index] === option.v) {
+      label.classList.add("option-selected");
+    }
+
+    const radio = document.createElement("input");
+    radio.type = "radio";
+    radio.name = `question-${index}`;
+    radio.value = option.v;
+    radio.checked = (answers[index] === option.v);
+    radio.className = "sr-only";
+
+    const text = document.createElement("div");
+    text.className = "flex-1 text-pink-700 font-medium";
+    text.textContent = option.t;
+
+    label.appendChild(radio);
+    label.appendChild(text);
+
+    label.addEventListener("click", () => {
+      answers[index] = option.v;
+      const allLabels = optionsDiv.querySelectorAll("label");
+      allLabels.forEach(l => l.classList.remove("option-selected"));
+      label.classList.add("option-selected");
+      playClickSound();
+      updateHint();
+    });
+
+    optionsDiv.appendChild(label);
+  });
+
+  qField.appendChild(optionsDiv);
+  currentIndexSpan.textContent = index + 1;
+  progressBar.style.width = `${((index + 1) / questions.length) * 100}%`;
+  prevBtn.disabled = (index === 0);
+  updateHint();
+}
+
+function updateHint() {
+  hint.textContent = answers[current] ? "✓ Respuesta guardada" : "Elige una opción";
+  hint.className = `text-xs ${answers[current] ? 'text-green-500' : 'text-pink-400'}`;
+}
+
+function goToPrevious() {
+  if (current > 0) {
+    current--;
+    renderQuestion(current);
+  }
+}
+
+function goToNext() {
+  if (!answers[current]) {
+    hint.textContent = "Por favor, selecciona una opción";
+    hint.classList.add("text-red-500");
+    setTimeout(() => {
+      hint.classList.remove("text-red-500");
+      updateHint();
+    }, 2000);
+    return;
+  }
+
+  if (current < questions.length - 1) {
+    current++;
+    renderQuestion(current);
+  } else {
+    showResults();
+  }
+}
+
+function resetQuiz() {
+  // Ocultar resultados y reiniciar quiz
+  resultCard.classList.add("hidden");
+  answers = Array(questions.length).fill(null);
+  current = 0;
+  
+  if (userSystem.currentUser) {
+    showScreen(authScreen);
+  } else {
+    showScreen(welcomeScreen);
+  }
+}
+
+function showResults() {
+  // Contar respuestas
+  const scores = {};
+  Object.keys(philosophers).forEach(philosopher => {
+    scores[philosopher] = 0;
+  });
+
+  answers.forEach(answer => {
+    if (answer && scores.hasOwnProperty(answer)) {
+      scores[answer]++;
+    }
+  });
+
+  // Calcular porcentajes
+  const results = Object.entries(scores).map(([philosopher, score]) => ({
+    philosopher,
+    name: philosophers[philosopher].name,
+    score,
+    percentage: (score / questions.length) * 100
+  }));
+
+  // Ordenar por puntuación
+  results.sort((a, b) => b.score - a.score);
+
+  const winner = results[0];
+  
+  // Mostrar resultado principal
+  resultTitle.textContent = winner.name;
+  resultSubtitle.textContent = `Afinidad: ${winner.percentage.toFixed(1)}%`;
+  resultDesc.textContent = philosophers[winner.philosopher].desc;
+  resultQuote.textContent = `"${philosophers[winner.philosopher].quote}"`;
+
+  // Mostrar barra de progreso de otros filósofos
+  percentList.innerHTML = '';
+  results.forEach(result => {
+    const row = document.createElement('div');
+    row.className = 'flex items-center gap-3';
+    
+    const name = document.createElement('div');
+    name.className = 'w-32 text-sm font-medium text-pink-700';
+    name.textContent = result.name;
+    
+    const barContainer = document.createElement('div');
+    barContainer.className = 'flex-1 bg-white rounded-full h-3 overflow-hidden border border-pink-50';
+    
+    const bar = document.createElement('div');
+    bar.className = 'h-full bg-gradient-to-r from-pink-400 to-rose-500 rounded-full';
+    bar.style.width = `${result.percentage}%`;
+    
+    const percentage = document.createElement('div');
+    percentage.className = 'w-14 text-right text-sm text-pink-600 font-semibold';
+    percentage.textContent = `${result.percentage.toFixed(1)}%`;
+    
+    barContainer.appendChild(bar);
+    row.appendChild(name);
+    row.appendChild(barContainer);
+    row.appendChild(percentage);
+    
+    percentList.appendChild(row);
+  });
+
+  // Guardar resultado actual
+  currentResult = {
+    philosopher: winner.philosopher,
+    percentage: winner.percentage,
+    scores: scores
+  };
+  
+  // Si el usuario está registrado, mostrar botones
+  if (userSystem.currentUser) {
+    saveResultBtn.classList.remove("hidden");
+    goToProfileBtn.classList.remove("hidden");
+    saveResultBtn.textContent = '💾 Guardar resultado';
+    saveResultBtn.disabled = false;
+    
+    // Mostrar estadísticas si tiene historial
+    const stats = userSystem.getUserStats();
+    if (stats.testsCompleted > 0) {
+      testsCompleted.textContent = stats.testsCompleted;
+      mostCommonPhilosopher.textContent = stats.mostCommonPhilosopher ? 
+        philosophers[stats.mostCommonPhilosopher].name : '-';
+      userStats.classList.remove("hidden");
+    }
+  } else {
+    // Asegurarse de que estén ocultos si no hay usuario
+    saveResultBtn.classList.add("hidden");
+    goToProfileBtn.classList.add("hidden");
+    userStats.classList.add("hidden");
+  }
+  
+  // Mostrar sección de resultados
+  resultCard.classList.remove("hidden");
+  resultCard.scrollIntoView({ behavior: 'smooth' });
+}
+
+function shareResult() {
+  const resultText = `¡Hecho el test Filolove y mi resultado es ${resultTitle.textContent}! ${resultDesc.textContent}`;
+  
+  if (navigator.share) {
+    navigator.share({
+      title: 'Mi resultado en Filolove',
+      text: resultText,
+      url: window.location.href
+    });
+  } else {
+    navigator.clipboard.writeText(resultText).then(() => {
+      alert('¡Resultado copiado al portapapeles! 📋');
+    });
+  }
+}
+
+function playClickSound() {
+  try {
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+    oscillator.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.1);
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
+  } catch (e) {
+    console.log("Audio no disponible");
+  }
+}
+
+// ========== FUNCIONES DE HISTORIAL ==========
+function loadUserHistory() {
+  const history = userSystem.getUserHistory();
+  
+  if (history.length === 0) {
+    emptyHistory.classList.remove("hidden");
+    historyList.classList.add("hidden");
+    return;
+  }
+  
+  emptyHistory.classList.add("hidden");
+  historyList.classList.remove("hidden");
+  historyList.innerHTML = '';
+  
+  history.slice().reverse().forEach(result => { // Usar .slice() para no mutar el original
+    const historyItem = document.createElement('div');
+    historyItem.className = 'p-4 border border-pink-100 rounded-lg hover:bg-pink-50 transition';
+    
+    const date = new Date(result.date).toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    
+    const philosopherName = result.philosopher ? philosophers[result.philosopher].name : 'Desconocido';
+    const percentage = result.percentage ? result.percentage.toFixed(1) : 'N/A';
+    
+    historyItem.innerHTML = `
+      <div class="flex justify-between items-start">
+        <div>
+          <h4 class="font-semibold text-pink-700">${philosopherName}</h4>
+          <p class="text-sm text-pink-500">${date}</p>
+          <p class="text-sm text-pink-600 mt-1">Afinidad: <strong>${percentage}%</strong></p>
+        </div>
+        <div class="text-right">
+          <span class="px-2 py-1 bg-pink-100 text-pink-700 rounded text-xs font-medium">
+            ${percentage}%
+          </span>
+        </div>
+      </div>
+    `;
+    
+    historyList.appendChild(historyItem);
+  });
+}
+
+
+function toggleAuthForms() {
+  if (loginForm.classList.contains('hidden')) {
+    loginForm.classList.remove('hidden');
+    registerForm.classList.add('hidden');
+  } else {
+    loginForm.classList.add('hidden');
+    registerForm.classList.remove('hidden');
+  }
+}
+
+// ========== EVENT LISTENERS ==========
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("Filolove iniciado");
+  
+  // Verificar sesión activa
+  if (userSystem.hasActiveSession()) {
+    console.log("Sesión activa encontrada");
+    showScreen(authScreen);
+    updateUserInterface();
+  } else {
+    console.log("No hay sesión activa");
+    showScreen(welcomeScreen);
+  }
+
+  // Login de usuario
+  loginBtn.addEventListener("click", function() {
+    const username = loginUsername.value.trim();
+    const password = loginPassword.value.trim();
+    
+    if (!username || !password) {
+      alert("Por favor, completa todos los campos");
+      return;
+    }
+    
+    try {
+      userSystem.loginUser(username, password);
+      updateUserInterface();
+      alert(`¡Bienvenido de nuevo, ${username}!`);
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+
+  // Registro de usuario
+  registerBtn.addEventListener("click", function() {
+    const username = registerUsername.value.trim();
+    const email = registerEmail.value.trim();
+    const password = registerPassword.value.trim();
+    const confirm = confirmPassword.value.trim();
+    
+    if (!username || !password) {
+      alert("Por favor, completa los campos obligatorios");
+      return;
+    }
+    
+    if (password !== confirm) {
+      alert("Las contraseñas no coinciden");
+      return;
+    }
+    
+    if (password.length < 4) {
+      alert("La contraseña debe tener al menos 4 caracteres");
+      return;
+    }
+    
+    if (!privacyCheckbox.checked) {
+      alert("Debes aceptar la Política de Privacidad para registrarte");
+      return;
+    }
+    
+    try {
+      userSystem.registerUser(username, email, password);
+      updateUserInterface();
+      alert(`¡Cuenta creada exitosamente, ${username}!`);
+    } catch (error) {
+      alert(error.message);
+    }
+  });
+
+  // Navegación entre formularios de auth
+  showRegisterBtn.addEventListener("click", toggleAuthForms);
+  showLoginBtn.addEventListener("click", toggleAuthForms);
+
+  // Continuar sin cuenta
+  continueWithoutAccount.addEventListener("click", function() {
+    showScreen(welcomeScreen);
+  });
+
+  // Cerrar modal de privacidad
+  closePrivacyModal.addEventListener("click", hidePrivacyModal);
+
+  // Navegación entre pantallas
+  startWithUserBtn.addEventListener("click", function() {
+    showScreen(quizSection);
+    current = 0;
+    answers = Array(questions.length).fill(null);
+    renderQuestion(current);
+  });
+
+  startBtn.addEventListener("click", function() {
+    showScreen(quizSection);
+    current = 0;
+    answers = Array(questions.length).fill(null);
+    renderQuestion(current);
+  });
+
+  showAuthBtn.addEventListener("click", function() {
+    showScreen(authScreen);
+  });
+
+  viewHistoryBtn.addEventListener("click", function() {
+    loadUserHistory();
+    showScreen(historyScreen);
+  });
+
+  editProfileBtn.addEventListener("click", showProfileScreen);
+
+  backFromHistoryBtn.addEventListener("click", function() {
+    showScreen(authScreen);
+  });
+
+  backFromProfileBtn.addEventListener("click", function() {
+    showScreen(authScreen);
+  });
+  
+  // NUEVO
+  backFromMatchBtn.addEventListener("click", function() {
+    showScreen(authScreen);
+  });
+
+  startFromHistoryBtn.addEventListener("click", function() {
+    showScreen(quizSection);
+    current = 0;
+    answers = Array(questions.length).fill(null);
+    renderQuestion(current);
+  });
+  
+  // NUEVO
+  findMatchesBtn.addEventListener("click", function() {
+    displayMatches();
+    showScreen(matchScreen);
+  });
+
+  logoutBtn.addEventListener("click", function() {
+    userSystem.logout();
+    updateUserInterface(); // Actualizar UI antes de cambiar de pantalla
+    showScreen(welcomeScreen);
+    alert("Sesión cerrada correctamente");
+  });
+
+  saveResultBtn.addEventListener("click", function() {
+    if (userSystem.currentUser && currentResult) {
+      const saved = userSystem.saveTestResult(currentResult);
+      if (saved) {
+        alert('✅ Resultado guardado en tu historial');
+        saveResultBtn.textContent = '💾 Guardado';
+        saveResultBtn.disabled = true;
+        goToProfileBtn.classList.remove("hidden");
+        
+        // Actualizar estadísticas
+        const stats = userSystem.getUserStats();
+        testsCompleted.textContent = stats.testsCompleted;
+        mostCommonPhilosopher.textContent = stats.mostCommonPhilosopher ? 
+          philosophers[stats.mostCommonPhilosopher].name : '-';
+        userStats.classList.remove("hidden");
+        
+        // Mostrar botón de editar perfil
+        editProfileBtn.classList.remove("hidden");
+        
+        // Actualizar UI para mostrar botones si es necesario
+        updateUserInterface();
+      }
+    }
+  });
+
+  goToProfileBtn.addEventListener("click", function() {
+    showProfileScreen();
+  });
+
+  // Event listeners del perfil
+  addHobbyBtn.addEventListener("click", addHobby);
+  
+  newHobby.addEventListener("keypress", function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault(); 
+      addHobbyBtn.click();
+    }
+  });
+  
+  // MODIFICADO: Ahora redirige a la pantalla de matches
+  saveProfileBtn.addEventListener("click", function() {
+    if (saveProfile()) { // saveProfile() valida y guarda
+       alert('✅ Perfil guardado correctamente');
+       displayMatches(); // Genera la lista de matches
+       showScreen(matchScreen); // Muestra la pantalla de matches
+       updateUserInterface(); // Actualiza la UI (para mostrar el botón de matches en auth)
+    }
+    // Si saveProfile() devuelve false, ya habrá mostrado una alerta
+  });
+  
+  cancelProfileBtn.addEventListener("click", function() {
+    showScreen(authScreen);
+  });
+
+  // Event listeners del quiz
+  prevBtn.addEventListener("click", goToPrevious);
+  nextBtn.addEventListener("click", goToNext);
+  resetBtn.addEventListener("click", resetQuiz);
+  tryAgainBtn.addEventListener("click", function() {
+    answers = Array(questions.length).fill(null);
+    current = 0;
+    resultCard.classList.add("hidden");
+    renderQuestion(current);
+  });
+  shareBtn.addEventListener("click", shareResult);
+});
+
+// Permitir enviar con Enter
+loginUsername.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') loginBtn.click();
+});
+loginPassword.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') loginBtn.click();
+});
+registerUsername.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') registerBtn.click();
+});
+registerPassword.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') registerBtn.click();
+});
+confirmPassword.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') registerBtn.click();
+});
+
+// Cerrar modal al hacer click fuera
+document.getElementById('privacyModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    hidePrivacyModal();
+  }
+});
+</script>
+</body>
+</html>
